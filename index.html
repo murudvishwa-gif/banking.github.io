@@ -592,11 +592,26 @@ footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,.06); pa
 .footer-brand h3 { font-family: var(--ff-display); font-size: 1.3rem; font-weight: 800; color: var(--white); margin-bottom: 12px; }
 .footer-brand p { font-size: .875rem; color: rgba(255,255,255,.4); line-height: 1.7; max-width: 280px; margin-bottom: 24px; }
 .footer-socials { display: flex; gap: 8px; }
-.footer-social {
-  width: 38px; height: 38px; border-radius: 8px;
-  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08);
-  display: flex; align-items: center; justify-content: center;
-  font-size: .9rem; color: rgba(255,255,255,.5); transition: all .2s;
+.footer-social{
+  width:38px;
+  height:38px;
+  border-radius:8px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:.9rem;
+  color:rgba(255,255,255,.5);
+  transition:all .2s;
+  text-decoration:none;
+}
+
+.footer-social:hover{
+  background:rgba(200,151,58,.15);
+  color:var(--gold);
+  border-color:rgba(200,151,58,.2);
+  transform:translateY(-2px);
 }
 .footer-social:hover { background: rgba(200,151,58,.15); color: var(--gold); border-color: rgba(200,151,58,.2); }
 .footer-col h4 { font-family: var(--ff-display); font-size: .9rem; font-weight: 600; color: var(--white); margin-bottom: 16px; }
@@ -992,11 +1007,11 @@ section, footer, header, nav { max-width: 100%; }
       <span class="stackly-logo-text">stackly</span>
     </a>
     <div class="nav-links">
-      <a href="#" class="active">Home</a>
-      <a href="#" onclick="openModal('about-modal');return false;">About</a>
-      <a href="#" onclick="openModal('services-modal');return false;">Services</a>
-      <a href="#" onclick="openModal('blog-modal');return false;">Blog</a>
-      <a href="#" onclick="openModal('contact-modal');return false;">Contact</a>
+      <a href="404page.html" class="active">Home</a>
+      <a href="404page.html" onclick="openModal('about-modal');return false;">About</a>
+      <a href="404page.html" onclick="openModal('services-modal');return false;">Services</a>
+      <a href="404page.html" onclick="openModal('blog-modal');return false;">Blog</a>
+      <a href="404page.html" onclick="openModal('contact-modal');return false;">Contact</a>
     </div>
     <div class="nav-cta">
       <a href="#" class="btn btn-outline btn-sm" onclick="openModal('login-modal');return false;">Sign In</a>
@@ -1715,12 +1730,12 @@ section, footer, header, nav { max-width: 100%; }
           <span>Stackly</span>
         </a>
         <p>A new kind of bank built for the way India lives and works today. Regulated by the Reserve Bank of India. DICGC insured.</p>
-        <div class="footer-socials">
-          <div class="footer-social">𝕏</div>
-          <div class="footer-social">in</div>
-          <div class="footer-social">f</div>
-          <div class="footer-social">▶</div>
-        </div>
+       <div class="footer-socials">
+  <a href="404page.html" class="footer-social">𝕏</a>
+  <a href="404page.html" class="footer-social">in</a>
+  <a href="404page.html" class="footer-social">f</a>
+  <a href="404page.html" class="footer-social">▶</a>
+</div>
       </div>
       <div class="footer-col">
         <h4>Products</h4>
