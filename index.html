@@ -1126,7 +1126,7 @@ body.menu-open { overflow: hidden; }
       <span class="stackly-logo-text">stackly</span>
     </a>
     <div class="nav-links">
-      <a href="404page.html" class="active">Home</a>
+      <a href="#hero" class="active" onclick="goHome();return false;">Home</a>
       <a href="404page.html" onclick="openModal('about-modal');return false;">About</a>
       <a href="404page.html" onclick="openModal('services-modal');return false;">Services</a>
       <a href="404page.html" onclick="openModal('blog-modal');return false;">Blog</a>
@@ -1144,7 +1144,7 @@ body.menu-open { overflow: hidden; }
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#">Home</a>
+  <a href="#hero" onclick="goHome();return false;">Home</a>
   <a href="#" onclick="openModal('about-modal');closeMobileMenu();return false;">About</a>
   <a href="#" onclick="openModal('services-modal');closeMobileMenu();return false;">Services</a>
   <a href="#" onclick="openModal('blog-modal');closeMobileMenu();return false;">Blog</a>
@@ -2385,6 +2385,15 @@ function closeMobileMenu(){
   hamburger.classList.remove("active");
   document.body.classList.remove("menu-open");
   hamburger.setAttribute("aria-expanded", "false");
+}
+
+function goHome(){
+  closeMobileMenu();
+  document.querySelectorAll('.page-overlay.open').forEach(el => el.classList.remove('open'));
+  document.body.style.overflow = '';
+  document.body.classList.remove('menu-open');
+  const hero = document.getElementById('hero');
+  if (hero) hero.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // ---- Modals ----
