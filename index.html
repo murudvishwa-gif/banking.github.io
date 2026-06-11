@@ -154,7 +154,6 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   font-family: var(--ff-display); font-weight: 800; font-size: 1.4rem;
   color: var(--white); letter-spacing: -.02em;
   display: flex; align-items: center; gap: 10px;
-  min-width: fit-content; flex-shrink: 0; z-index: 1001;
 }
 .nav-logo-mark {
   width: 34px; height: 34px; background: var(--gold);
@@ -171,109 +170,22 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .nav-links a:hover { color: var(--white); background: rgba(255,255,255,.08); }
 .nav-links a.active { color: var(--gold); }
 .nav-cta { display: flex; align-items: center; gap: 12px; }
-.hamburger {
-  display: none; flex-direction: column; gap: 5px;
-  padding: 6px; z-index: 1001; position: relative;
-}
+.hamburger { display: none; flex-direction: column; gap: 5px; padding: 6px; }
 .hamburger span { width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all .3s; }
-.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* ============================================================
-   FULL-SCREEN MOBILE MENU
-   ============================================================ */
 .mobile-menu {
   display: none;
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 998;
-  background: rgba(10,15,30,.97);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  flex-direction: column;
-  overflow-y: auto;
+  position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 998;
+  background: rgba(10,15,30,.96); backdrop-filter: blur(16px);
+  padding: 24px; flex-direction: column; gap: 8px;
+  border-top: 1px solid rgba(255,255,255,.08);
 }
 .mobile-menu.open { display: flex; }
-
-.mobile-menu-inner {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 0 32px 48px;
-  padding-top: calc(var(--nav-h) + 40px);
+.mobile-menu a {
+  padding: 14px 16px; color: rgba(255,255,255,.8); font-size: 1rem;
+  border-radius: 8px; transition: all .2s;
 }
-
-.mobile-menu-inner a {
-  padding: 18px 0;
-  color: rgba(255,255,255,.75);
-  font-family: var(--ff-display);
-  font-size: 2rem;
-  font-weight: 700;
-  border-bottom: 1px solid rgba(255,255,255,.07);
-  transition: color .2s, padding-left .2s;
-  letter-spacing: -.02em;
-  border-radius: 0;
-}
-.mobile-menu-inner a:hover { color: var(--gold); padding-left: 10px; }
-.mobile-menu-inner .btn {
-  margin-top: 32px;
-  justify-content: center;
-  font-size: 1.05rem;
-  padding: 16px 28px;
-}
-
-.mobile-menu-footer {
-  padding: 0 32px 40px;
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.mobile-menu-footer a {
-  font-family: var(--ff-mono);
-  font-size: .75rem;
-  color: rgba(255,255,255,.3);
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  transition: color .2s;
-}
-.mobile-menu-footer a:hover { color: var(--gold); }
-
-body.menu-open { overflow: hidden; }
-
-/* ============================================================
-   SECTION TITLE BANNER (on scroll into view)
-   ============================================================ */
-.section-label-bar {
-  position: relative;
-  overflow: visible;
-}
-.section-label-bar::before {
-  content: attr(data-section-title);
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%) translateY(-100%);
-  background: var(--gold);
-  color: var(--ink);
-  font-family: var(--ff-display);
-  font-weight: 700;
-  font-size: .7rem;
-  text-transform: uppercase;
-  letter-spacing: .18em;
-  padding: 7px 28px;
-  border-radius: 0 0 14px 14px;
-  transition: transform .45s cubic-bezier(.34,1.56,.64,1), opacity .35s ease;
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 20;
-  opacity: 0;
-  box-shadow: 0 4px 18px rgba(200,151,58,.25);
-}
-.section-label-bar.label-visible::before {
-  transform: translateX(-50%) translateY(0);
-  opacity: 1;
-}
+.mobile-menu a:hover { color: var(--white); background: rgba(255,255,255,.06); }
+.mobile-menu .btn { margin-top: 8px; justify-content: center; }
 
 /* ============================================================
    SECTION 1 — HERO
@@ -359,7 +271,7 @@ body.menu-open { overflow: hidden; }
 .trust-logo-item:hover { opacity: .8; }
 
 /* ============================================================
-   SECTION 3 — ABOUT
+   SECTION 3 — ABOUT / WHO WE ARE
    ============================================================ */
 #about {}
 .about-eyebrow-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
@@ -420,7 +332,7 @@ body.menu-open { overflow: hidden; }
 .service-link:hover { gap: 10px; }
 
 /* ============================================================
-   SECTION 5 — FEATURES
+   SECTION 5 — FEATURES / WHY NEXABANK
    ============================================================ */
 #features {}
 .features-lead { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
@@ -440,7 +352,7 @@ body.menu-open { overflow: hidden; }
 .feature-body p { font-size: .9rem; color: var(--slate); margin-top: 6px; line-height: 1.6; }
 
 /* ============================================================
-   SECTION 6 — STATS
+   SECTION 6 — STATS / NUMBERS
    ============================================================ */
 #stats { background: var(--gold); }
 .stats-inner { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
@@ -521,7 +433,7 @@ body.menu-open { overflow: hidden; }
 .testimonial-role { font-size: .8rem; color: rgba(255,255,255,.4); }
 
 /* ============================================================
-   SECTION 9 — APP PROMO
+   SECTION 9 — APP PROMO / CTA SPLIT
    ============================================================ */
 #app-promo {
   background: linear-gradient(135deg, var(--teal) 0%, var(--ink) 100%);
@@ -563,7 +475,7 @@ body.menu-open { overflow: hidden; }
 .app-store-name { font-family: var(--ff-display); font-weight: 600; }
 
 /* ============================================================
-   SECTION 10 — PRICING
+   SECTION 10 — PRICING / PLANS
    ============================================================ */
 #pricing {}
 .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
@@ -680,15 +592,28 @@ footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,.06); pa
 .footer-brand h3 { font-family: var(--ff-display); font-size: 1.3rem; font-weight: 800; color: var(--white); margin-bottom: 12px; }
 .footer-brand p { font-size: .875rem; color: rgba(255,255,255,.4); line-height: 1.7; max-width: 280px; margin-bottom: 24px; }
 .footer-socials { display: flex; gap: 8px; }
-.footer-social {
-  width: 38px; height: 38px; border-radius: 8px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.08);
-  display: flex; align-items: center; justify-content: center;
-  font-size: .9rem; color: rgba(255,255,255,.5);
-  transition: all .2s; text-decoration: none;
+.footer-social{
+  width:38px;
+  height:38px;
+  border-radius:8px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:.9rem;
+  color:rgba(255,255,255,.5);
+  transition:all .2s;
+  text-decoration:none;
 }
-.footer-social:hover { background: rgba(200,151,58,.15); color: var(--gold); border-color: rgba(200,151,58,.2); transform: translateY(-2px); }
+
+.footer-social:hover{
+  background:rgba(200,151,58,.15);
+  color:var(--gold);
+  border-color:rgba(200,151,58,.2);
+  transform:translateY(-2px);
+}
+.footer-social:hover { background: rgba(200,151,58,.15); color: var(--gold); border-color: rgba(200,151,58,.2); }
 .footer-col h4 { font-family: var(--ff-display); font-size: .9rem; font-weight: 600; color: var(--white); margin-bottom: 16px; }
 .footer-col ul li { margin-bottom: 10px; }
 .footer-col ul li a { font-size: .875rem; color: rgba(255,255,255,.4); transition: color .2s; }
@@ -703,7 +628,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,.06); pa
 .footer-bottom-links a:hover { color: var(--gold); }
 
 /* ============================================================
-   PAGE MODALS
+   PAGE MODALS (About / Login / etc.)
    ============================================================ */
 .page-overlay {
   display: none; position: fixed; inset: 0; z-index: 2000;
@@ -725,7 +650,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,.06); pa
 }
 .modal-close:hover { background: var(--ink); color: var(--white); }
 
-/* LOGIN MODAL */
+/* ——— LOGIN MODAL ——— */
 .login-layout { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
 .login-brand {
   background: var(--ink); padding: 56px 48px;
@@ -758,7 +683,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,.06); pa
 .form-link { color: var(--accent); font-size: .85rem; }
 .form-link:hover { text-decoration: underline; }
 
-/* ABOUT MODAL */
+/* ——— ABOUT PAGE MODAL ——— */
 .about-modal { padding: 0; }
 .about-modal-hero {
   background: linear-gradient(135deg, var(--ink) 0%, var(--ink-soft) 100%);
@@ -794,7 +719,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,.06); pa
 .timeline-title { font-family: var(--ff-display); font-size: 1rem; font-weight: 600; }
 .timeline-desc { font-size: .875rem; color: var(--slate); margin-top: 4px; line-height: 1.6; }
 
-/* SERVICES MODAL */
+/* ——— SERVICES PAGE MODAL ——— */
 .services-modal-body { padding: 56px; }
 .services-modal-header { text-align: center; margin-bottom: 56px; }
 .services-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -819,7 +744,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,.06); pa
 .rates-table td { padding: 14px 16px; border-bottom: 1px solid rgba(10,15,30,.06); font-size: .875rem; }
 .rates-table tr:hover td { background: var(--ice); }
 
-/* BLOG MODAL */
+/* ——— BLOG MODAL ——— */
 .blog-modal-body { padding: 56px; }
 .blog-modal-header { text-align: center; margin-bottom: 56px; }
 .blog-modal-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-bottom: 40px; }
@@ -842,7 +767,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,.06); pa
 }
 .cat-btn:hover, .cat-btn.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
 
-/* CONTACT MODAL */
+/* ——— CONTACT MODAL ——— */
 .contact-modal-body { padding: 56px; }
 .contact-modal-header { text-align: center; margin-bottom: 48px; }
 .contact-modal-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 56px; }
@@ -889,30 +814,54 @@ footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,.06); pa
 #back-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
 #back-top:hover { background: var(--gold-lt); }
 
-/* ============================================================
-   LOGO STYLES
-   ============================================================ */
-.stackly-logo-img {
-  width: 42px; height: 42px; object-fit: contain;
-  border-radius: 10px; background: rgba(255,255,255,.08); padding: 4px;
-}
-.stackly-logo-text {
-  font-family: var(--ff-display); font-weight: 800; font-size: 1.35rem;
-  color: var(--white); letter-spacing: -.02em;
-}
-.footer-logo {
-  display: inline-flex; align-items: center; gap: 10px;
-  margin-bottom: 12px; color: var(--white);
-  font-family: var(--ff-display); font-size: 1.3rem; font-weight: 800;
-}
-.footer-logo-img {
-  width: 40px; height: 40px; object-fit: contain;
-  border-radius: 10px; background: rgba(255,255,255,.08); padding: 4px;
-}
+
 
 /* ============================================================
-   RESPONSIVE
+   STACKLY LOGO + RESPONSIVE NAV FIXES
    ============================================================ */
+.nav-logo {
+  min-width: fit-content;
+  flex-shrink: 0;
+}
+.stackly-logo-img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: rgba(255,255,255,.08);
+  padding: 4px;
+}
+.stackly-logo-text {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: var(--white);
+  letter-spacing: -.02em;
+}
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: var(--white);
+  font-family: var(--ff-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+.footer-logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: rgba(255,255,255,.08);
+  padding: 4px;
+}
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+body.menu-open { overflow: hidden; }
+
+/* Better desktop/tablet/mobile wrapping */
 section, footer, header, nav { max-width: 100%; }
 .container, .nav-inner { width: 100%; }
 .blog-card, .pricing-card, .testimonial-card, .service-card, .feature-item, .contact-form { min-width: 0; }
@@ -926,8 +875,35 @@ section, footer, header, nav { max-width: 100%; }
 @media (max-width: 900px) {
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
+  .mobile-menu {
+    max-height: calc(100vh - var(--nav-h));
+    overflow-y: auto;
+  }
 }
 
+@media (max-width: 768px) {
+  .stackly-logo-img { width: 36px; height: 36px; }
+  .stackly-logo-text { font-size: 1.15rem; }
+  .nav-inner { padding: 0 18px; }
+  .hero-content { padding: 56px 0; }
+  .hero-headline br { display: none; }
+  .hero-trust { flex-wrap: wrap; }
+  .services-grid, .pricing-grid, .testimonials-track, .blog-featured, .contact-grid, .app-promo-grid, .faq-layout, .features-lead { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .stackly-logo-img { width: 32px; height: 32px; padding: 3px; }
+  .stackly-logo-text { font-size: 1rem; }
+  .mobile-menu { padding: 16px; }
+  .hero-actions, .newsletter-form, .app-btns { width: 100%; }
+  .hero-actions .btn, .newsletter-form .btn, .app-btns .app-store-btn { width: 100%; justify-content: center; }
+  .footer-logo-img { width: 34px; height: 34px; }
+  .footer-logo { font-size: 1.1rem; }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE
+   ============================================================ */
 @media (max-width: 1024px) {
   :root { --section-gap: 80px; }
   .grid-4 { grid-template-columns: repeat(2,1fr); }
@@ -957,9 +933,8 @@ section, footer, header, nav { max-width: 100%; }
 
 @media (max-width: 768px) {
   :root { --section-gap: 60px; --nav-h: 64px; }
-  .stackly-logo-img { width: 36px; height: 36px; }
-  .stackly-logo-text { font-size: 1.15rem; }
-  .nav-inner { padding: 0 18px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
   .h-display { font-size: clamp(2.4rem,8vw,3.5rem); }
   .h1 { font-size: clamp(1.9rem,6vw,2.6rem); }
   .h2 { font-size: clamp(1.6rem,5vw,2.2rem); }
@@ -1000,7 +975,6 @@ section, footer, header, nav { max-width: 100%; }
   .app-btns { flex-direction: column; }
   .app-store-btn { justify-content: center; }
   .login-sso { flex-direction: column; }
-  .mobile-menu-inner a { font-size: 1.6rem; }
 }
 
 @media (max-width: 480px) {
@@ -1018,17 +992,133 @@ section, footer, header, nav { max-width: 100%; }
   .about-modal-hero h1 { font-size: 1.6rem; }
   .service-card { padding: 28px 20px; }
   .page-overlay { padding: 16px 8px; }
-  .stackly-logo-img { width: 32px; height: 32px; padding: 3px; }
-  .stackly-logo-text { font-size: 1rem; }
-  .mobile-menu-inner { padding: 0 20px 40px; padding-top: calc(var(--nav-h) + 32px); }
-  .mobile-menu-inner a { font-size: 1.4rem; }
-  .mobile-menu-footer { padding: 0 20px 32px; }
 }
+
+
+/* ============================================================
+   FIX: FULL SCREEN MOBILE HAMBURGER + MODAL TITLES
+   ============================================================ */
+.modal-title-bar {
+  padding: 28px 56px;
+  background: var(--ink);
+  color: var(--white);
+  border-bottom: 4px solid var(--gold);
+}
+.modal-title-bar h2 {
+  font-family: var(--ff-display);
+  font-size: clamp(1.55rem, 4vw, 2.35rem);
+  font-weight: 800;
+  line-height: 1.15;
+}
+.modal-title-bar p {
+  color: rgba(255,255,255,.68);
+  margin-top: 6px;
+  font-size: .95rem;
+}
+.modal-title-bar + .services-modal-body,
+.modal-title-bar + .blog-modal-body,
+.modal-title-bar + .contact-modal-body {
+  padding-top: 42px;
+}
+
+.hamburger {
+  display: none;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border-radius: 14px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.18);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+  z-index: 3002;
+}
+.hamburger span {
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 8px;
+  transition: transform .3s ease, opacity .3s ease, background .3s ease;
+}
+.hamburger.active {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.hamburger.active span { background: var(--ink); }
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  min-height: 100vh;
+  width: 100vw;
+  background: radial-gradient(circle at top right, rgba(200,151,58,.18), transparent 35%), rgba(10,15,30,.985);
+  backdrop-filter: blur(18px);
+  border-top: 0;
+  padding: calc(var(--nav-h) + 34px) 24px 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  overflow-y: auto;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  width: min(100%, 380px);
+  padding: 16px 18px;
+  color: rgba(255,255,255,.88);
+  font-size: 1.12rem;
+  font-family: var(--ff-display);
+  font-weight: 600;
+  text-align: center;
+  border-radius: 16px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+  transition: all .22s ease;
+}
+.mobile-menu a:hover {
+  color: var(--gold-lt);
+  background: rgba(200,151,58,.16);
+  border-color: rgba(200,151,58,.28);
+  transform: translateY(-2px);
+}
+.mobile-menu .btn {
+  margin-top: 8px;
+  justify-content: center;
+  background: var(--gold);
+  color: var(--ink);
+}
+body.menu-open { overflow: hidden; }
+
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none !important; }
+  .hamburger { display: flex !important; }
+}
+@media (max-width: 768px) {
+  .modal-title-bar { padding: 24px 28px; }
+  .modal-title-bar + .services-modal-body,
+  .modal-title-bar + .blog-modal-body,
+  .modal-title-bar + .contact-modal-body { padding-top: 28px; }
+}
+@media (max-width: 480px) {
+  .mobile-menu { padding-left: 16px; padding-right: 16px; }
+  .mobile-menu a { font-size: 1rem; padding: 14px 16px; }
+}
+
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
 <nav id="navbar">
   <div class="nav-inner">
     <a href="#" class="nav-logo" aria-label="Stackly Home">
@@ -1036,11 +1126,11 @@ section, footer, header, nav { max-width: 100%; }
       <span class="stackly-logo-text">stackly</span>
     </a>
     <div class="nav-links">
-      <a href="#" class="active">Home</a>
-      <a href="#" onclick="openModal('about-modal');return false;">About</a>
-      <a href="#" onclick="openModal('services-modal');return false;">Services</a>
-      <a href="#" onclick="openModal('blog-modal');return false;">Blog</a>
-      <a href="#" onclick="openModal('contact-modal');return false;">Contact</a>
+      <a href="404page.html" class="active">Home</a>
+      <a href="404page.html" onclick="openModal('about-modal');return false;">About</a>
+      <a href="404page.html" onclick="openModal('services-modal');return false;">Services</a>
+      <a href="404page.html" onclick="openModal('blog-modal');return false;">Blog</a>
+      <a href="404page.html" onclick="openModal('contact-modal');return false;">Contact</a>
     </div>
     <div class="nav-cta">
       <a href="#" class="btn btn-outline btn-sm" onclick="openModal('login-modal');return false;">Sign In</a>
@@ -1052,25 +1142,19 @@ section, footer, header, nav { max-width: 100%; }
   </div>
 </nav>
 
-<!-- FULL-SCREEN MOBILE MENU -->
+<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobile-menu">
-  <div class="mobile-menu-inner">
-    <a href="#" onclick="closeMobileMenu();return false;">Home</a>
-    <a href="#" onclick="openModal('about-modal');closeMobileMenu();return false;">About</a>
-    <a href="#" onclick="openModal('services-modal');closeMobileMenu();return false;">Services</a>
-    <a href="#" onclick="openModal('blog-modal');closeMobileMenu();return false;">Blog</a>
-    <a href="#" onclick="openModal('contact-modal');closeMobileMenu();return false;">Contact</a>
-    <a href="#" class="btn btn-primary" onclick="openModal('login-modal');closeMobileMenu();return false;">Open Account →</a>
-  </div>
-  <div class="mobile-menu-footer">
-    <a href="#">Privacy</a>
-    <a href="#">Terms</a>
-    <a href="#">Support</a>
-    <a href="#">Careers</a>
-  </div>
+  <a href="#">Home</a>
+  <a href="#" onclick="openModal('about-modal');closeMobileMenu();return false;">About</a>
+  <a href="#" onclick="openModal('services-modal');closeMobileMenu();return false;">Services</a>
+  <a href="#" onclick="openModal('blog-modal');closeMobileMenu();return false;">Blog</a>
+  <a href="#" onclick="openModal('contact-modal');closeMobileMenu();return false;">Contact</a>
+  <a href="#" class="btn btn-primary" onclick="openModal('login-modal');closeMobileMenu();return false;">Open Account →</a>
 </div>
 
-<!-- SECTION 1 — HERO -->
+<!-- ============================================================
+     SECTION 1 — HERO
+     ============================================================ -->
 <section id="hero">
   <div class="hero-bg-grid"></div>
   <div class="hero-glow"></div>
@@ -1088,8 +1172,12 @@ section, footer, header, nav { max-width: 100%; }
         <p>Stackly combines the trust of traditional banking with the speed of modern technology — giving you control, clarity, and confidence over every rupee.</p>
       </div>
       <div class="hero-actions">
-        <a href="#" class="btn btn-primary btn-lg" onclick="openModal('login-modal');return false;">Open Free Account →</a>
-        <a href="#" class="btn btn-outline btn-lg" onclick="openModal('services-modal');return false;">Explore Services</a>
+        <a href="#" class="btn btn-primary btn-lg" onclick="openModal('login-modal');return false;">
+          Open Free Account →
+        </a>
+        <a href="#" class="btn btn-outline btn-lg" onclick="openModal('services-modal');return false;">
+          Explore Services
+        </a>
         <div class="hero-trust">
           <span>🔒 Secured by RBI</span>
           <div class="hero-trust-sep"></div>
@@ -1116,7 +1204,9 @@ section, footer, header, nav { max-width: 100%; }
   </div>
 </section>
 
-<!-- SECTION 2 — TRUST -->
+<!-- ============================================================
+     SECTION 2 — TRUST LOGOS
+     ============================================================ -->
 <section id="trust">
   <div class="container">
     <div class="trust-inner">
@@ -1134,8 +1224,10 @@ section, footer, header, nav { max-width: 100%; }
   </div>
 </section>
 
-<!-- SECTION 3 — ABOUT -->
-<section id="about" class="section section-label-bar" data-section-title="About Us">
+<!-- ============================================================
+     SECTION 3 — ABOUT
+     ============================================================ -->
+<section id="about" class="section">
   <div class="container">
     <div class="grid-2">
       <div>
@@ -1204,60 +1296,111 @@ section, footer, header, nav { max-width: 100%; }
   </div>
 </section>
 
-<!-- SECTION 4 — SERVICES -->
-<section id="services" class="section section--dark section-label-bar" data-section-title="Our Services">
+<!-- ============================================================
+     SECTION 4 — SERVICES
+     ============================================================ -->
+<section id="services" class="section section--dark">
   <div class="container">
+
     <div class="services-header reveal">
       <span class="eyebrow">What We Offer</span>
-      <h2 class="h2 mt-8" style="color:white;">Every financial need — one trusted roof</h2>
-      <p class="body-lg mt-16">From your first savings account to complex corporate treasury — Stackly has a product built precisely for the moment you're in.</p>
+      <h2 class="h2 mt-8" style="color:white;">
+        Every financial need — one trusted roof
+      </h2>
+      <p class="body-lg mt-16">
+        From your first savings account to complex corporate treasury — Stackly has a product built precisely for the moment you're in.
+      </p>
     </div>
+
     <div class="services-grid">
+
+      <!-- Personal Banking -->
       <div class="service-card reveal">
         <div class="service-icon">🏦</div>
         <h3>Personal Banking</h3>
-        <p>Zero-fee savings accounts, high-yield FDs, and instant debit cards with worldwide acceptance.</p>
-        <a href="#" class="service-link">Learn more →</a>
+        <p>
+          Zero-fee savings accounts, high-yield FDs, and instant debit cards with worldwide acceptance.
+        </p>
+        <a href="404page.html" class="service-link">
+          Learn more →
+        </a>
       </div>
+
+      <!-- Business Accounts -->
       <div class="service-card reveal reveal-delay-1">
         <div class="service-icon">💼</div>
         <h3>Business Accounts</h3>
-        <p>Current accounts, bulk payment APIs, GST-ready ledgers, and multi-user access controls.</p>
-        <a href="#" class="service-link">Learn more →</a>
+        <p>
+          Current accounts, bulk payment APIs, GST-ready ledgers, and multi-user access controls.
+        </p>
+        <a href="404page.html" class="service-link">
+          Learn more →
+        </a>
       </div>
+
+      <!-- Investments & Wealth -->
       <div class="service-card reveal reveal-delay-2">
         <div class="service-icon">📈</div>
         <h3>Investments & Wealth</h3>
-        <p>Mutual funds, SIPs, gold bonds, and portfolio management starting from ₹500.</p>
-        <a href="#" class="service-link">Learn more →</a>
+        <p>
+          Mutual funds, SIPs, gold bonds, and portfolio management starting from ₹500.
+        </p>
+        <a href="404page.html" class="service-link">
+          Learn more →
+        </a>
       </div>
+
+      <!-- Home Loans -->
       <div class="service-card reveal">
         <div class="service-icon">🏠</div>
         <h3>Home Loans</h3>
-        <p>Rates from 8.4% p.a. with doorstep processing, quick disbursal, and flexible tenure up to 30 years.</p>
-        <a href="#" class="service-link">Learn more →</a>
+        <p>
+          Rates from 8.4% p.a. with doorstep processing, quick disbursal, and flexible tenure up to 30 years.
+        </p>
+        <a href="404page.html" class="service-link">
+          Learn more →
+        </a>
       </div>
+
+      <!-- Credit Cards -->
       <div class="service-card reveal reveal-delay-1">
         <div class="service-icon">💳</div>
         <h3>Credit Cards</h3>
-        <p>Cashback, travel miles, and premium lifestyle cards — zero joining fee for new customers.</p>
-        <a href="#" class="service-link">Learn more →</a>
+        <p>
+          Cashback, travel miles, and premium lifestyle cards — zero joining fee for new customers.
+        </p>
+        <a href="404page.html" class="service-link">
+          Learn more →
+        </a>
       </div>
+
+      <!-- NRI Services -->
       <div class="service-card reveal reveal-delay-2">
         <div class="service-icon">🔐</div>
         <h3>NRI Services</h3>
-        <p>NRE/NRO accounts, forex remittances, and dedicated NRI relationship managers.</p>
-        <a href="#" class="service-link">Learn more →</a>
+        <p>
+          NRE/NRO accounts, forex remittances, and dedicated NRI relationship managers.
+        </p>
+        <a href="404page.html" class="service-link">
+          Learn more →
+        </a>
       </div>
+
     </div>
+
     <div class="text-center mt-48">
-      <a href="#" class="btn btn-primary btn-lg" onclick="openModal('services-modal');return false;">View All Services →</a>
+      <a href="404page.html" class="btn btn-primary btn-lg">
+        View All Services →
+      </a>
     </div>
+
   </div>
 </section>
 
-<!-- SECTION 5 — FEATURES -->
-<section id="features" class="section section-label-bar" data-section-title="Why Stackly">
+<!-- ============================================================
+     SECTION 5 — FEATURES / WHY NEXABANK
+     ============================================================ -->
+<section id="features" class="section">
   <div class="container">
     <div class="features-lead">
       <div class="features-sticky reveal">
@@ -1309,8 +1452,10 @@ section, footer, header, nav { max-width: 100%; }
   </div>
 </section>
 
-<!-- SECTION 6 — STATS -->
-<section id="stats" class="section-label-bar" data-section-title="By The Numbers">
+<!-- ============================================================
+     SECTION 6 — STATS
+     ============================================================ -->
+<section id="stats">
   <div class="container">
     <div class="stats-inner">
       <div class="stat-item reveal">
@@ -1337,8 +1482,10 @@ section, footer, header, nav { max-width: 100%; }
   </div>
 </section>
 
-<!-- SECTION 7 — BLOG -->
-<section id="blog" class="section section--ice section-label-bar" data-section-title="Stackly Journal">
+<!-- ============================================================
+     SECTION 7 — BLOG
+     ============================================================ -->
+<section id="blog" class="section section--ice">
   <div class="container">
     <div class="flex-between flex-wrap gap-16 reveal">
       <div>
@@ -1367,7 +1514,9 @@ section, footer, header, nav { max-width: 100%; }
           <div>
             <span class="blog-tag">Product</span>
             <h4>UPI AutoPay: set it, forget it, never miss a bill</h4>
-            <div class="blog-meta" style="margin-top:8px;"><span class="blog-date">May 2025</span></div>
+            <div class="blog-meta" style="margin-top:8px;">
+              <span class="blog-date">May 2025</span>
+            </div>
           </div>
         </div>
         <div class="blog-card-sm reveal reveal-delay-1">
@@ -1375,7 +1524,9 @@ section, footer, header, nav { max-width: 100%; }
           <div>
             <span class="blog-tag">Home Loans</span>
             <h4>Floating vs fixed rate mortgages in a rising rate environment</h4>
-            <div class="blog-meta" style="margin-top:8px;"><span class="blog-date">Apr 2025</span></div>
+            <div class="blog-meta" style="margin-top:8px;">
+              <span class="blog-date">Apr 2025</span>
+            </div>
           </div>
         </div>
         <div class="blog-card-sm reveal reveal-delay-2">
@@ -1383,7 +1534,9 @@ section, footer, header, nav { max-width: 100%; }
           <div>
             <span class="blog-tag">Tax</span>
             <h4>New tax regime for FY2025-26: what Stackly customers need to know</h4>
-            <div class="blog-meta" style="margin-top:8px;"><span class="blog-date">Mar 2025</span></div>
+            <div class="blog-meta" style="margin-top:8px;">
+              <span class="blog-date">Mar 2025</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1391,8 +1544,10 @@ section, footer, header, nav { max-width: 100%; }
   </div>
 </section>
 
-<!-- SECTION 8 — TESTIMONIALS -->
-<section id="testimonials" class="section section--dark section-label-bar" data-section-title="Customer Stories">
+<!-- ============================================================
+     SECTION 8 — TESTIMONIALS
+     ============================================================ -->
+<section id="testimonials" class="section section--dark">
   <div class="container">
     <div class="text-center reveal">
       <span class="eyebrow">Customer Stories</span>
@@ -1436,8 +1591,10 @@ section, footer, header, nav { max-width: 100%; }
   </div>
 </section>
 
-<!-- SECTION 9 — APP PROMO -->
-<section id="app-promo" class="section section-label-bar" data-section-title="Stackly Mobile">
+<!-- ============================================================
+     SECTION 9 — APP PROMO
+     ============================================================ -->
+<section id="app-promo" class="section">
   <div class="container">
     <div class="app-promo-grid">
       <div class="reveal">
@@ -1497,8 +1654,10 @@ section, footer, header, nav { max-width: 100%; }
   </div>
 </section>
 
-<!-- SECTION 10 — PRICING -->
-<section id="pricing" class="section section-label-bar" data-section-title="Pricing Plans">
+<!-- ============================================================
+     SECTION 10 — PRICING
+     ============================================================ -->
+<section id="pricing" class="section">
   <div class="container">
     <div class="text-center reveal">
       <span class="eyebrow">Account Plans</span>
@@ -1567,8 +1726,10 @@ section, footer, header, nav { max-width: 100%; }
   </div>
 </section>
 
-<!-- SECTION 11 — FAQ -->
-<section id="faq" class="section section--ice section-label-bar" data-section-title="FAQ">
+<!-- ============================================================
+     SECTION 11 — FAQ
+     ============================================================ -->
+<section id="faq" class="section section--ice">
   <div class="container">
     <div class="faq-layout">
       <div class="reveal">
@@ -1581,36 +1742,56 @@ section, footer, header, nav { max-width: 100%; }
       </div>
       <div class="faq-list reveal reveal-delay-1">
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Is my money safe with Stackly?<div class="faq-icon">+</div></div>
-          <div class="faq-a">Yes. All deposits are insured up to ₹5 lakh per customer under DICGC. Stackly is regulated by the Reserve Bank of India and holds an AA+ credit rating from CRISIL.</div>
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Is my money safe with Stackly?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">Yes. All deposits are insured up to ₹5 lakh per customer under DICGC (Deposit Insurance and Credit Guarantee Corporation). Stackly is regulated by the Reserve Bank of India and holds an AA+ credit rating from CRISIL.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">How quickly can I open an account?<div class="faq-icon">+</div></div>
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How quickly can I open an account?
+            <div class="faq-icon">+</div>
+          </div>
           <div class="faq-a">Most accounts are opened in under 4 minutes using Aadhaar-based eKYC and a selfie. You'll need your Aadhaar, PAN, and a mobile number linked to Aadhaar. Your account number and debit card are issued instantly.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">What is the auto-sweep feature?<div class="faq-icon">+</div></div>
-          <div class="faq-a">Auto-sweep automatically moves idle savings balance above a threshold you set into an overnight liquid mutual fund — earning approximately 6.8% annualised. The money sweeps back into your savings account by 9 AM the next day.</div>
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What is the auto-sweep feature?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">Auto-sweep automatically moves any idle savings balance above a threshold you set (e.g., ₹25,000) into an overnight liquid mutual fund — earning approximately 6.8% annualised. The money sweeps back into your savings account by 9 AM the next day, available for spending at any time.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Can I use Stackly if I live abroad?<div class="faq-icon">+</div></div>
-          <div class="faq-a">Yes. NRIs can open NRE, NRO, or FCNR accounts with Stackly. Our dedicated NRI team handles the paperwork, FEMA compliance, and provides preferential remittance rates.</div>
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Can I use Stackly if I live abroad?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">Yes. NRIs can open NRE, NRO, or FCNR accounts with Stackly. Our dedicated NRI team handles the paperwork, FEMA compliance, and provides preferential remittance rates. You can manage everything through the app from anywhere in the world.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">How do I apply for a home loan?<div class="faq-icon">+</div></div>
-          <div class="faq-a">Start your home loan application online via the app or website. Our system provides a conditional sanction letter within 15 minutes. A relationship manager contacts you within 2 hours for full documentation. Disbursal typically takes 7-10 working days.</div>
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How do I apply for a home loan?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">Start your home loan application entirely online via the app or website. Our system provides a conditional sanction letter within 15 minutes based on your credit profile. A relationship manager then contacts you within 2 hours to guide the full documentation process. Disbursal typically takes 7-10 working days.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">What charges apply for international transactions?<div class="faq-icon">+</div></div>
-          <div class="faq-a">Essential plan: 3.5% markup. Premium plan: 1.5% markup. Private plan: interbank rates with zero markup. All international ATM withdrawals on Premium and above are free worldwide.</div>
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What charges apply for international transactions?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">Essential plan: 3.5% markup on forex transactions. Premium plan: 1.5% markup. Private plan: interbank rates with zero markup. All international ATM withdrawals on Premium and above are free worldwide.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 12 — CONTACT -->
-<section id="contact" class="section section-label-bar" data-section-title="Contact Us">
+<!-- ============================================================
+     SECTION 12 — CONTACT
+     ============================================================ -->
+<section id="contact" class="section">
   <div class="container">
     <div class="reveal text-center" style="max-width:600px;margin:0 auto;">
       <span class="eyebrow">Get In Touch</span>
@@ -1684,7 +1865,9 @@ section, footer, header, nav { max-width: 100%; }
   </div>
 </section>
 
-<!-- SECTION 13 — NEWSLETTER -->
+<!-- ============================================================
+     SECTION 13 — NEWSLETTER
+     ============================================================ -->
 <section id="newsletter">
   <div class="container">
     <div class="newsletter-inner">
@@ -1701,7 +1884,9 @@ section, footer, header, nav { max-width: 100%; }
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
 <footer>
   <div class="container">
     <div class="footer-top">
@@ -1711,12 +1896,12 @@ section, footer, header, nav { max-width: 100%; }
           <span>Stackly</span>
         </a>
         <p>A new kind of bank built for the way India lives and works today. Regulated by the Reserve Bank of India. DICGC insured.</p>
-        <div class="footer-socials">
-          <a href="#" class="footer-social">𝕏</a>
-          <a href="#" class="footer-social">in</a>
-          <a href="#" class="footer-social">f</a>
-          <a href="#" class="footer-social">▶</a>
-        </div>
+       <div class="footer-socials">
+  <a href="404page.html" class="footer-social">𝕏</a>
+  <a href="404page.html" class="footer-social">in</a>
+  <a href="404page.html" class="footer-social">f</a>
+  <a href="404page.html" class="footer-social">▶</a>
+</div>
       </div>
       <div class="footer-col">
         <h4>Products</h4>
@@ -1776,10 +1961,14 @@ section, footer, header, nav { max-width: 100%; }
      PAGE MODALS
      ============================================================ -->
 
-<!-- LOGIN MODAL -->
+<!-- ——— LOGIN MODAL ——— -->
 <div class="page-overlay" id="login-modal" onclick="overlayClose(event,'login-modal')">
   <div class="page-modal">
     <button class="modal-close" onclick="closeModal('login-modal')">✕</button>
+    <div class="modal-title-bar">
+      <h2>Secure Account Login</h2>
+      <p>Sign in or open your Stackly account safely.</p>
+    </div>
     <div class="login-layout">
       <div class="login-brand">
         <div style="font-family:var(--ff-display);font-size:1.4rem;font-weight:800;color:white;margin-bottom:32px;">Stackly</div>
@@ -1824,14 +2013,18 @@ section, footer, header, nav { max-width: 100%; }
   </div>
 </div>
 
-<!-- ABOUT MODAL -->
+<!-- ——— ABOUT MODAL ——— -->
 <div class="page-overlay" id="about-modal" onclick="overlayClose(event,'about-modal')">
   <div class="page-modal about-modal">
     <button class="modal-close" onclick="closeModal('about-modal')">✕</button>
+    <div class="modal-title-bar">
+      <h2>About Stackly</h2>
+      <p>Know more about our banking journey, mission, and leadership.</p>
+    </div>
     <div class="about-modal-hero">
       <div style="position:relative;">
         <span class="eyebrow" style="color:var(--gold-lt);">Our Story</span>
-        <h1 style="font-family:var(--ff-display);font-size:clamp(2rem,5vw,2.8rem);font-weight:800;color:white;margin-top:8px;">Building India's most trusted digital bank</h1>
+        <h1 class="about-modal-hero" style="font-family:var(--ff-display);font-size:clamp(2rem,5vw,2.8rem);font-weight:800;color:white;margin-top:8px;">Building India's most trusted digital bank</h1>
         <p style="color:rgba(255,255,255,.55);font-size:1.05rem;max-width:520px;margin:16px auto 0;">From a single Andheri office in 2008 to a nationwide force with 2.8M customers — here's how we got here.</p>
       </div>
     </div>
@@ -1906,10 +2099,14 @@ section, footer, header, nav { max-width: 100%; }
   </div>
 </div>
 
-<!-- SERVICES MODAL -->
+<!-- ——— SERVICES MODAL ——— -->
 <div class="page-overlay" id="services-modal" onclick="overlayClose(event,'services-modal')">
   <div class="page-modal" style="max-width:980px;">
     <button class="modal-close" onclick="closeModal('services-modal')">✕</button>
+    <div class="modal-title-bar">
+      <h2>Our Services</h2>
+      <p>Explore personal banking, business banking, loans, and investments.</p>
+    </div>
     <div class="services-modal-body">
       <div class="services-modal-header">
         <span class="eyebrow">Full Service Suite</span>
@@ -1961,7 +2158,12 @@ section, footer, header, nav { max-width: 100%; }
       <h3 class="h4" style="margin:48px 0 20px;">Indicative Interest Rates</h3>
       <table class="rates-table">
         <thead>
-          <tr><th>Product</th><th>Minimum Rate</th><th>Maximum Rate</th><th>Tenure</th></tr>
+          <tr>
+            <th>Product</th>
+            <th>Minimum Rate</th>
+            <th>Maximum Rate</th>
+            <th>Tenure</th>
+          </tr>
         </thead>
         <tbody>
           <tr><td>Savings Account</td><td>4.0% p.a.</td><td>7.1% p.a.</td><td>—</td></tr>
@@ -1976,10 +2178,14 @@ section, footer, header, nav { max-width: 100%; }
   </div>
 </div>
 
-<!-- BLOG MODAL -->
+<!-- ——— BLOG MODAL ——— -->
 <div class="page-overlay" id="blog-modal" onclick="overlayClose(event,'blog-modal')">
   <div class="page-modal" style="max-width:960px;">
     <button class="modal-close" onclick="closeModal('blog-modal')">✕</button>
+    <div class="modal-title-bar">
+      <h2>Latest Banking Blogs</h2>
+      <p>Read practical money tips, market updates, and financial guides.</p>
+    </div>
     <div class="blog-modal-body">
       <div class="blog-modal-header">
         <span class="eyebrow">Stackly Journal</span>
@@ -2052,10 +2258,14 @@ section, footer, header, nav { max-width: 100%; }
   </div>
 </div>
 
-<!-- CONTACT MODAL -->
+<!-- ——— CONTACT MODAL ——— -->
 <div class="page-overlay" id="contact-modal" onclick="overlayClose(event,'contact-modal')">
   <div class="page-modal" style="max-width:900px;">
     <button class="modal-close" onclick="closeModal('contact-modal')">✕</button>
+    <div class="modal-title-bar">
+      <h2>Contact Us</h2>
+      <p>Reach our support team through phone, email, chat, or message form.</p>
+    </div>
     <div class="contact-modal-body">
       <div class="contact-modal-header">
         <span class="eyebrow">Get In Touch</span>
@@ -2155,26 +2365,31 @@ window.addEventListener('scroll', () => {
   else bt.classList.remove('visible');
 });
 
-// ---- Mobile menu (full-screen) ----
-function toggleMobileMenu() {
-  const menu = document.getElementById('mobile-menu');
-  const hamburger = document.getElementById('hamburger');
-  const isOpen = menu.classList.contains('open');
+// ---- Mobile menu ----
+function toggleMobileMenu(){
+  const menu = document.getElementById("mobile-menu");
+  const hamburger = document.getElementById("hamburger");
 
-  menu.classList.toggle('open');
-  hamburger.classList.toggle('active');
-  document.body.classList.toggle('menu-open');
-  hamburger.setAttribute('aria-expanded', !isOpen);
+  menu.classList.toggle("open");
+  hamburger.classList.toggle("active");
+  document.body.classList.toggle("menu-open", menu.classList.contains("open"));
+
+  hamburger.setAttribute("aria-expanded", menu.classList.contains("open"));
 }
 
-function closeMobileMenu() {
-  document.getElementById('mobile-menu').classList.remove('open');
-  document.getElementById('hamburger').classList.remove('active');
-  document.body.classList.remove('menu-open');
+function closeMobileMenu(){
+  const menu = document.getElementById("mobile-menu");
+  const hamburger = document.getElementById("hamburger");
+
+  menu.classList.remove("open");
+  hamburger.classList.remove("active");
+  document.body.classList.remove("menu-open");
+  hamburger.setAttribute("aria-expanded", "false");
 }
 
 // ---- Modals ----
 function openModal(id) {
+  closeMobileMenu();
   document.getElementById(id).classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -2187,10 +2402,11 @@ function overlayClose(e, id) {
 }
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
+    closeMobileMenu();
     document.querySelectorAll('.page-overlay.open').forEach(el => {
       el.classList.remove('open');
+      document.body.style.overflow = '';
     });
-    document.body.style.overflow = '';
   }
 });
 
@@ -2217,30 +2433,16 @@ document.querySelectorAll('.cat-btn').forEach(btn => {
 });
 
 // ---- Scroll reveal ----
-const revealObserver = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.classList.add('visible');
-      revealObserver.unobserve(e.target);
+      observer.unobserve(e.target);
     }
   });
 }, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// ---- Section title banners ----
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('label-visible');
-    } else {
-      e.target.classList.remove('label-visible');
-    }
-  });
-}, { threshold: 0.08, rootMargin: '-60px 0px 0px 0px' });
-
-document.querySelectorAll('.section-label-bar').forEach(el => {
-  sectionObserver.observe(el);
-});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // ---- Counter animation for hero stats ----
 function animateCount(el, target, suffix) {
@@ -2258,6 +2460,7 @@ function formatNum(n, target) {
   return Math.round(n);
 }
 
+// Trigger stats animation when hero is visible
 const heroObs = new IntersectionObserver((entries) => {
   if (entries[0].isIntersecting) {
     setTimeout(() => {
